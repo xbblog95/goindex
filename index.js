@@ -4,10 +4,10 @@ var authConfig = {
     "siteName": "GoIndex", // 网站名称
     "root_pass": "index",  // 根目录密码，优先于.password
     "version" : "1.0.6", // 程序版本
-    "theme" : "material", // material  classic 
+    "theme" : "material", // material  classic
     "client_id": "202264815644.apps.googleusercontent.com",
     "client_secret": "X4Z3ca8xfWDb1Voo-F9a7ZxJ",
-    "refresh_token": "1//0g39B1Ezs2OOCCgYIARAAGBASNgF-L9IrNM-hySUDZegq_T2ptYIUrN5i_McTW0PVHVfEnSz27UmNEIt1Q7eLYbGYutwg9cegjQ", // 授权 token
+    "refresh_token": "", // 授权 token
     "root": "" // 根目录ID
 };
 
@@ -73,7 +73,7 @@ async function handleRequest(request) {
       if (file == undefined){
         return new Response("", { status: 404 }); // if path: /exist/notexist
       }
-      
+
       let range = request.headers.get('Range');
       return gd.down(file.id, range);
     }
@@ -263,7 +263,7 @@ class googleDrive {
 
     async _findDirId(parent, name){
       name = decodeURIComponent(name).replace(/\'/g, "\\'");
-      
+
       console.log("_findDirId",parent,name);
 
       if(parent==undefined){
